@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         addControls();
         getProductFromFirebase();
         addEvents();
+
+
     }
 
     @Override
@@ -92,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getProductFromFirebase() {
-        FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance("https://qr-app-e485c-default-rtdb.asia-southeast1.firebasedatabase.app/");
         DatabaseReference myRef= firebaseDatabase.getReference("products");
         adapter.clear();
         myRef.addValueEventListener(new ValueEventListener() {
