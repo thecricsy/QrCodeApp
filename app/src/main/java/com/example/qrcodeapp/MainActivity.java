@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getProductFromFirebase() {
-        FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance("https://qr-app-e485c-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
         DatabaseReference myRef= firebaseDatabase.getReference("products");
         adapter.clear();
         myRef.addValueEventListener(new ValueEventListener() {

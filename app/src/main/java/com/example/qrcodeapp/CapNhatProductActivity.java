@@ -38,6 +38,9 @@ public class CapNhatProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cap_nhat_product);
+        addControls();
+        getProductDetail();
+        addEvents();
     }
     private void getProductDetail() {
         Intent intent=getIntent();

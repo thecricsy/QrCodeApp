@@ -91,20 +91,20 @@ public class ThemProductActivity extends AppCompatActivity {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             //Kết nối tới node có tên là products (node này do ta định nghĩa trong CSDL Firebase)
             DatabaseReference myRef = database.getReference("products");
-            String contactId=edtId.getText().toString();
+            String productId=edtId.getText().toString();
             String ten = edtTen.getText().toString();
             String price = edtPrice.getText().toString();
             String description = edtDescription.getText().toString();
-            myRef.child(contactId).child("price").setValue(price);
-            myRef.child(contactId).child("description").setValue(description);
-            myRef.child(contactId).child("name").setValue(ten);
+            myRef.child(productId).child("price").setValue(price);
+            myRef.child(productId).child("description").setValue(description);
+            myRef.child(productId).child("name").setValue(ten);
 
             //đưa bitmap về base64string:
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             selectedBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
             byte[] byteArray = byteArrayOutputStream .toByteArray();
             String imgeEncoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
-            myRef.child(contactId).child("picture").setValue(imgeEncoded);
+            myRef.child(productId).child("picture").setValue(imgeEncoded);
 
             finish();
         }
