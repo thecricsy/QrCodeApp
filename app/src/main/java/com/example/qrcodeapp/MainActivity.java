@@ -97,10 +97,11 @@ public class MainActivity extends AppCompatActivity {
     private void getProductFromFirebase() {
         FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
         DatabaseReference myRef= firebaseDatabase.getReference("products");
-        adapter.clear();
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                adapter.clear();
                 for (DataSnapshot dss : dataSnapshot.getChildren())
                 {
                     //convert ra đối tượng Product:
