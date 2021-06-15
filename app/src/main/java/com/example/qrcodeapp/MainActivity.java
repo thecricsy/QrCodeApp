@@ -1,8 +1,5 @@
 package com.example.qrcodeapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,9 +7,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -48,12 +47,30 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.mnuAdd)
-        {
-        //mở màn hình thêm ở đây
-            Intent intent=new Intent(MainActivity.this,ThemProductActivity.class);
-            startActivity(intent);
+        switch (item.getItemId()){
+            case R.id.mnuAdd:
+                Intent intent=new Intent(MainActivity.this,ThemProductActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.mnuQR:
+                Intent intent2=new Intent(MainActivity.this,QRGenerate.class);
+                startActivity(intent2);
+                break;
+            default:
+                break;
         }
+//        if(item.getItemId()==R.id.mnuAdd)
+//        {
+//        //mở màn hình thêm ở đây
+//            Intent intent=new Intent(MainActivity.this,ThemProductActivity.class);
+//            startActivity(intent);
+//        }
+//        if(item.getItemId()==R.id.mnuQR)
+//        {
+//            //mở màn hình QR ở đây
+//            Intent intent=new Intent(MainActivity.this,QRGenerate.class);
+//            startActivity(intent);
+//        }
         return super.onOptionsItemSelected(item);
     }
 
