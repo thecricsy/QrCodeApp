@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QRGenerate">
+    tools:context=".BarcodeGenerate">
 
     <EditText
-        android:id="@+id/qrInput"
+        android:id="@+id/edt_value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/generateBtn"
+        android:id="@+id/generate_barcode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -33,26 +33,26 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qrInput" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_value" />
 
     <ImageView
-        android:id="@+id/qrPlaceHolder"
+        android:id="@+id/qr_image"
         android:layout_width="320dp"
-        android:layout_height="340dp"
+        android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/generateBtn"
-        app:layout_constraintVertical_bias="0.12"
+        app:layout_constraintTop_toBottomOf="@+id/generate_barcode"
+        app:layout_constraintVertical_bias="0.134"
         app:srcCompat="@android:drawable/screen_background_dark_transparent" />
 
     <Button
-        android:id="@+id/saveBtn"
+        android:id="@+id/save_barcode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="184dp"
         android:layout_marginEnd="32dp"
         android:background="#42A5F5"
         android:gravity="center_horizontal"
@@ -63,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qrPlaceHolder" />
+        app:layout_constraintTop_toBottomOf="@+id/qr_image" />
 
     <Button
         android:id="@+id/scanBtn"
@@ -81,6 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveBtn"
-        app:layout_constraintVertical_bias="0.191" />
+        app:layout_constraintTop_toBottomOf="@+id/save_barcode"
+        app:layout_constraintVertical_bias="0.25" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

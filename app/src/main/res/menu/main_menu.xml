@@ -6,4 +6,7 @@
     <item
         android:id="@+id/mnuQR"
         android:title="QR code" />
+    <item
+        android:id="@+id/mnuBC"
+        android:title="BarCode" />
 </menu>

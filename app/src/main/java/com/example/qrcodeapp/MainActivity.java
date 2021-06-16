@@ -56,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent2=new Intent(MainActivity.this,QRGenerate.class);
                 startActivity(intent2);
                 break;
+            case R.id.mnuBC:
+                Intent intent3=new Intent(MainActivity.this,BarcodeGenerate.class);
+                startActivity(intent3);
             default:
                 break;
         }
