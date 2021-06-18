@@ -1,6 +1,7 @@
 package com.example.qrcodeapp;
 
 import android.Manifest;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -91,6 +92,12 @@ public class BarcodeGenerate extends AppCompatActivity {
                 catch (Exception e){
                     e.printStackTrace();
                 }
+            }
+        });
+        findViewById(R.id.scanBCBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Scanner.class));
             }
         });
     }
