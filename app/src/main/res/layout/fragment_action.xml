@@ -22,21 +22,26 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/txtName_profile"
+                android:id="@+id/txtDevice_action"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name:"
+                android:text="Device:"
                 android:textSize="25sp"
                 android:layout_marginLeft="10dp"/>
             <TextView
-                android:id="@+id/txtEmail_profile"
+                android:id="@+id/txtStatus_action"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Email:"
+                android:text="Trạng thái:"
                 android:textSize="25sp"
                 android:layout_marginLeft="10dp"/>
         </LinearLayout>
     </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnStart_action"
+        android:text="Bắt đầu dây chuyền"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

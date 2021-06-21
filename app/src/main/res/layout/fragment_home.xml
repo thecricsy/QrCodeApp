@@ -16,19 +16,23 @@
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:id="@+id/btnCategory1"></ImageButton>
+            android:id="@+id/btnCategory1"
+            android:src="@drawable/ic_baseline_local_offer_24"></ImageButton>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:id="@+id/btnCategory2"></ImageButton>
+            android:id="@+id/btnCategory2"
+            android:src="@drawable/ic_baseline_search_24"></ImageButton>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:id="@+id/btnCategory3"></ImageButton>
+            android:id="@+id/btnCategory3"
+            android:src="@drawable/ic_code_scanner_auto_focus_off"></ImageButton>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:id="@+id/btnCategory4"></ImageButton>
+            android:id="@+id/btnCategory4"
+            android:src="@drawable/ic_baseline_arrow_forward_ios_24"></ImageButton>
     </LinearLayout>
     <ListView
         android:layout_width="match_parent"

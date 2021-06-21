@@ -9,10 +9,15 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,13 +25,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import org.jetbrains.annotations.NotNull;
+
 import adapter.ProductAdapter;
 import model.Product;
 
 public class ProductDetailActivity extends AppCompatActivity {
-    ProductAdapter adapter;
     TextView edtId,edtTen,edtPrice,edtDescription, edtQuantity, edtExpectedQuantity, edtPendingQuantity,edtVacxin;
     ImageView imgPicture;
+    Button btnStart;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +48,25 @@ public class ProductDetailActivity extends AppCompatActivity {
         edtExpectedQuantity = findViewById(R.id.txtExpectedQuantity_product_detail);
         edtPendingQuantity = findViewById(R.id.txtPending_product_detail);
         edtVacxin = findViewById(R.id.txtVacxin_product_detail);
+        btnStart = findViewById(R.id.btnStart_product_detail);
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference rff= database.getReference();
+                rff.child("device").child("1").child("productId").setValue(edtId.getText().toString().trim());
+                rff.child("device").child("1").child("count").setValue(edtQuantity.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+                        Toast.makeText(ProductDetailActivity.this, "Đã bắt đầu dây chuyền.", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });
         getProductDetail();
     }
     private void getProductDetail() {
         Intent intent=getIntent();
         final String key=intent.getStringExtra("id");
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("products");
         myRef.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

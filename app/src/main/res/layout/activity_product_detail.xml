@@ -81,9 +81,9 @@
 
 
     <Button
-        android:id="@+id/btnDongCapNhat"
+        android:id="@+id/btnStart_product_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đồng Ý Cập Nhật"
+        android:text="Bắt đầu dây chuyền"
         android:textSize="15sp" />
 </LinearLayout>

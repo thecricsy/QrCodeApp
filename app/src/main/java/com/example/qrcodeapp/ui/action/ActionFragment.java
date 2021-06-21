@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,34 +12,43 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import com.example.qrcodeapp.R;
+import com.example.qrcodeapp.Scanner;
 import com.example.qrcodeapp.ThemProductActivity;
 import com.example.qrcodeapp.databinding.FragmentActionBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import model.Category;
+import model.Product;
 
 public class ActionFragment extends Fragment {
+    TextView txtDevName, txtDevStatus;
     private FragmentActionBinding binding;
-    Button btnAddProduct, btnAddCategory, btnAddVacxin;
+    Button btnAddProduct, btnAddCategory, btnAddVacxin, btnStart;
     FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentActionBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        txtDevName = root.findViewById(R.id.txtDevice_action);
+        txtDevStatus = root.findViewById(R.id.txtStatus_action);
         btnAddCategory = root.findViewById(R.id.btnAddCategory);
         btnAddCategory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +146,14 @@ public class ActionFragment extends Fragment {
                 dialog.show();
             }
         });
+        btnStart = root.findViewById(R.id.btnStart_action);
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), Scanner.class));
+            }
+        });
+        getDevice();
         return root;
     }
 
@@ -143,5 +161,23 @@ public class ActionFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+    private void getDevice() {
+        DatabaseReference myRef= firebaseDatabase.getReference("device");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dss : dataSnapshot.getChildren())
+                {
+                    txtDevName.setText("Thiết bị: "+ dss.child("name").getValue().toString());
+                    txtDevStatus.setText("Trạng thái: "+ dss.child("status").getValue().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }
