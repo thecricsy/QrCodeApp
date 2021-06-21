@@ -6,72 +6,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ThemProductActivity">
-
-    <EditText
-        android:id="@+id/edtProductId"
+    tools:context=".ProductDetailActivity">
+    <ImageView
+        android:id="@+id/imgPicture_product_detail"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+    <TextView
+        android:id="@+id/txtID_product_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nhập Id"
-        android:inputType="textPersonName"
-        android:textSize="15sp" />
-    <EditText
-        android:id="@+id/edtTen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nhập tên"
-        android:inputType="textPersonName"
+        android:text="ID:"
         android:textSize="15sp" />
 
-    <EditText
-        android:id="@+id/edtPrice"
+    <TextView
+        android:id="@+id/txtName_product_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Input Price"
-        android:inputType="number"
-        android:textSize="15sp" />
-
-    <EditText
-        android:id="@+id/edtExpectedQuantity_add_product"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nhập số lượng sự kiến"
-        android:inputType="number"
-        android:textSize="15sp" />
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spnVacxin_add_product"/>
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spnCategory_add_product"/>
-
-    <EditText
-        android:id="@+id/edtQuantity_add_product"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nhập số lượng"
-        android:inputType="numberDecimal"
-        android:textSize="15sp" />
-
-    <EditText
-        android:id="@+id/edtDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nhập mô tả"
-        android:inputType="textPersonName"
+        android:text="Tên:"
         android:textSize="15sp" />
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtPrice_product_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chọn Hình:"
+        android:text="Price:"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/txtVacxin_product_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vacxin:"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/txtQuantity_product_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Số lượng:"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/txtExpectedQuantity_product_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Số lượng dự định:"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/txtPending_product_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Số lượng tạm hoãn:"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/txtDescription_product_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mô tả:"
         android:textSize="15sp" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -84,24 +72,18 @@
             android:src="@android:drawable/ic_menu_camera" />
 
         <ImageButton
-            android:id="@+id/btnChoose"
+            android:id="@+id/btnEdit_product_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:src="@android:drawable/ic_menu_edit" />
-        <Button
-            android:onClick="xuLyThemMoi"
-            android:id="@+id/btnDongYThem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Đồng Ý Thêm"
-            android:textSize="15sp" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imgPicture"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
 
+    <Button
+        android:id="@+id/btnDongCapNhat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đồng Ý Cập Nhật"
+        android:textSize="15sp" />
 </LinearLayout>

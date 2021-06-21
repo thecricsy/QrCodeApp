@@ -8,6 +8,9 @@ public class Product {
     private String picture;
     private String category;
     private String quantity;
+    private String vacxin;
+    private String expectedQuantity;
+    private String pendingQuantity;
 
     public String getPicture() {
         return picture;
@@ -56,4 +59,16 @@ public class Product {
     public String getQuantity(){ return quantity;}
 
     public void setQuantity(String quantity){this.quantity= quantity;}
+
+    public String getVacxin(){ return vacxin;}
+
+    public void setVacxin(String vacxin){this.vacxin= vacxin;}
+
+    public String getExpectedQuantity(){ return expectedQuantity;}
+
+    public void setExpectedQuantity(String expectedQuantity){this.expectedQuantity= expectedQuantity;}
+
+    public String getPendingQuantity(){ return pendingQuantity;}
+
+    public void setPendingQuantity(String pendingQuantity){this.pendingQuantity= pendingQuantity;}
 }

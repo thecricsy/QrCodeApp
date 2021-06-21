@@ -1,27 +1,29 @@
 package com.example.qrcodeapp.ui.home;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import androidx.appcompat.widget.SearchView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
-import com.example.qrcodeapp.CapNhatProductActivity;
 import com.example.qrcodeapp.MainActivity;
+import com.example.qrcodeapp.ProductDetailActivity;
+import com.example.qrcodeapp.QRGenerate;
 import com.example.qrcodeapp.R;
+import com.example.qrcodeapp.Scanner;
 import com.example.qrcodeapp.databinding.FragmentHomeBinding;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,76 +34,97 @@ import adapter.ProductAdapter;
 import model.Product;
 
 public class HomeFragment extends Fragment {
+    private SearchView searchView = null;
+    private SearchView.OnQueryTextListener queryTextListener;
 
-    private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
     ListView lvProduct;
     ProductAdapter adapter;
+    ImageButton btnCate1, btnCate2, btnCate3, btnCate4;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        btnCate1 = root.findViewById(R.id.btnCategory1);
+        btnCate2 = root.findViewById(R.id.btnCategory2);
+        btnCate3 = root.findViewById(R.id.btnCategory3);
+        btnCate4 = root.findViewById(R.id.btnCategory4);
+        addControll();
 
         lvProduct= root.findViewById(R.id.lvProduct);
         adapter=new ProductAdapter(getActivity(),R.layout.item);
         lvProduct.setAdapter(adapter);
         getProductFromFirebase();
-//        addEvents();
-
-//        final TextView textView = binding.textHome;
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
+        lvProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Product data=adapter.getItem(position);
+                Intent intent=new Intent(getContext(), ProductDetailActivity.class);
+                intent.putExtra("id",data.getProductId());
+                startActivity(intent);
+            }
+        });
         return root;
     }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.main_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+
+        if (searchItem != null) {
+            searchView = (SearchView) searchItem.getActionView();
+        }
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+            queryTextListener = new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    Log.i("onQueryTextChange", newText);
+
+                    return true;
+                }
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    Log.i("onQueryTextSubmit", query);
+
+                    return true;
+                }
+            };
+            searchView.setOnQueryTextListener(queryTextListener);
+        }
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                // Not implemented here
+                return false;
+            case R.id.mnuQR:
+                Intent intent2=new Intent(getContext(), Scanner.class);
+                startActivity(intent2);
+                break;
+            default:
+                break;
+        }
+        searchView.setOnQueryTextListener(queryTextListener);
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
-//    private void addEvents() {
-//
-//        lvProduct.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-//                Product product = adapter.getItem(position);
-//                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-//                DatabaseReference myRef = firebaseDatabase.getReference("products");
-//                myRef.child(product.getProductId()).removeValue()
-//                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void aVoid) {
-//                                Toast.makeText(getContext(), "Thành công", Toast.LENGTH_LONG).show();
-//
-//                                adapter.remove(product);
-//                            }
-//                        })
-//                        .addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                Toast.makeText(getContext(), "Lỗi rồi :" + e.toString(), Toast.LENGTH_LONG).show();
-//                            }
-//                        });
-//                return false;
-//            }
-//        });
-//        lvProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Product data=adapter.getItem(position);
-//                Intent intent=new Intent(getContext(), CapNhatProductActivity.class);
-//                intent.putExtra("KEY",data.getProductId());
-//                startActivity(intent);
-//            }
-//        });
-//    }
 
     private void getProductFromFirebase() {
         FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
@@ -126,6 +149,41 @@ public class HomeFragment extends Fragment {
 
             }
         });
+    }
+    private void addControll() {
+        btnCate1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(), MainActivity.class);
+                intent.putExtra("categoryId","1");
+                startActivity(intent);
+            }
+        });
+        btnCate2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(), MainActivity.class);
+                intent.putExtra("categoryId","2");
+                startActivity(intent);
+            }
+        });
+        btnCate3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(), MainActivity.class);
+                intent.putExtra("categoryId","3");
+                startActivity(intent);
+            }
+        });
+        btnCate4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(), MainActivity.class);
+                intent.putExtra("categoryId","4");
+                startActivity(intent);
+            }
+        });
+
     }
 
 }

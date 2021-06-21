@@ -45,34 +45,34 @@ public class MainActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.main_menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.mnuAdd:
-                Intent intent=new Intent(MainActivity.this,ThemProductActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.mnuQR:
-                Intent intent2=new Intent(MainActivity.this,QRGenerate.class);
-                startActivity(intent2);
-                break;
-            default:
-                break;
-        }
-//        if(item.getItemId()==R.id.mnuAdd)
-//        {
-//        //mở màn hình thêm ở đây
-//            Intent intent=new Intent(MainActivity.this,ThemProductActivity.class);
-//            startActivity(intent);
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()){
+//            case R.id.mnuAdd:
+//                Intent intent=new Intent(MainActivity.this,ThemProductActivity.class);
+//                startActivity(intent);
+//                break;
+//            case R.id.mnuQR:
+//                Intent intent2=new Intent(MainActivity.this,QRGenerate.class);
+//                startActivity(intent2);
+//                break;
+//            default:
+//                break;
 //        }
-//        if(item.getItemId()==R.id.mnuQR)
-//        {
-//            //mở màn hình QR ở đây
-//            Intent intent=new Intent(MainActivity.this,QRGenerate.class);
-//            startActivity(intent);
-//        }
-        return super.onOptionsItemSelected(item);
-    }
+////        if(item.getItemId()==R.id.mnuAdd)
+////        {
+////        //mở màn hình thêm ở đây
+////            Intent intent=new Intent(MainActivity.this,ThemProductActivity.class);
+////            startActivity(intent);
+////        }
+////        if(item.getItemId()==R.id.mnuQR)
+////        {
+////            //mở màn hình QR ở đây
+////            Intent intent=new Intent(MainActivity.this,QRGenerate.class);
+////            startActivity(intent);
+////        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     private void addEvents() {
 

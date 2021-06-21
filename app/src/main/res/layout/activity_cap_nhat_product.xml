@@ -38,6 +38,21 @@
         android:inputType="textPersonName"
         android:textSize="15sp" />
     <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nhập Price:"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/edtQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Số lượng"
+        android:inputType="number"
+        android:textSize="15sp" />
+    <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

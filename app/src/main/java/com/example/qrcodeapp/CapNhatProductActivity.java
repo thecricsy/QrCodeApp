@@ -28,7 +28,7 @@ import java.io.IOException;
 import model.Product;
 
 public class CapNhatProductActivity extends AppCompatActivity {
-    EditText edtId,edtTen,edtPrice,edtDescription;
+    EditText edtId,edtTen,edtPrice,edtDescription, edtQuantity;
     ImageView imgPicture;
     ImageButton btnCapture;
     ImageButton btnChoose;
@@ -58,6 +58,7 @@ public class CapNhatProductActivity extends AppCompatActivity {
                 try {
                     Product product=dataSnapshot.getValue(Product.class);
                     product.setProductId(dataSnapshot.getKey());
+                    edtQuantity.setText(product.getQuantity());
                     edtId.setText(product.getProductId());
                     edtTen.setText(product.getName());
                     edtPrice.setText(product.getPrice());
@@ -84,6 +85,7 @@ public class CapNhatProductActivity extends AppCompatActivity {
         btnCapture = (ImageButton) findViewById(R.id.btnCapture);
         btnChoose= (ImageButton) findViewById(R.id.btnChoose);
         imgPicture= (ImageView) findViewById(R.id.imgPicture);
+        edtQuantity = findViewById(R.id.edtQuantity);
         edtId=findViewById(R.id.edtProductId);
         edtTen=findViewById(R.id.edtTen);
         edtPrice=findViewById(R.id.edtPrice);
@@ -114,12 +116,12 @@ public class CapNhatProductActivity extends AppCompatActivity {
         startActivityForResult(cInt,100);
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 100&& resultCode == RESULT_OK) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == RESULT_OK) {
             //xử lý lấy ảnh trực tiếp lúc chụp hình:
             selectedBitmap = (Bitmap) data.getExtras().get("data");
             imgPicture.setImageBitmap(selectedBitmap);
-        }
-        else if(requestCode == 200&& resultCode == RESULT_OK) {
+        } else if (requestCode == 200 && resultCode == RESULT_OK) {
             try {
                 //xử lý lấy ảnh chọn từ điện thoại:
                 Uri imageUri = data.getData();

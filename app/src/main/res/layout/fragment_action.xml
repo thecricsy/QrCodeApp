@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.notifications.NotificationsFragment">
+    tools:context=".ui.action.ActionFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,22 +40,17 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnEdit_profile"
-        android:text="Edit Profile"/>
+        android:id="@+id/btnAddProduct"
+        android:text="Thêm sản phẩm"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnHelp"
-        android:text="Help"/>
+        android:id="@+id/btnAddCategory"
+        android:text="Thêm danh mục"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnAboutUs"
-        android:text="About Us"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnLogOut"
-        android:text="Log Out"/>
+        android:id="@+id/btnAddVacxin"
+        android:text="Thêm vacxin"/>
 
 </LinearLayout>

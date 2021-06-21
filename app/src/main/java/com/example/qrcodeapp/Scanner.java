@@ -1,6 +1,7 @@
 package com.example.qrcodeapp;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -42,7 +43,9 @@ public class Scanner extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        resultData.setText(result.getText());
+                        Intent i  = new Intent(Scanner.this, ProductDetailActivity.class);
+                        i.putExtra("id", result.getText());
+//                        resultData.setText(result.getText());
                     }
                 });
 
