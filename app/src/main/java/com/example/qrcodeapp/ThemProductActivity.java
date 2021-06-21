@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import model.Category;
@@ -170,8 +171,9 @@ public class ThemProductActivity extends AppCompatActivity {
         try {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference("products");
-            String productId=edtId.getText().toString();
+
             String ten = edtTen.getText().toString();
+            String productId= ten+java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
             String price = edtPrice.getText().toString();
             String description = edtDescription.getText().toString();
             String quantity = edtQuantity.getText().toString();
@@ -188,7 +190,9 @@ public class ThemProductActivity extends AppCompatActivity {
 //            byte[] byteArray = byteArrayOutputStream .toByteArray();
 //            String imgeEncoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
             myRef.child(productId).child("picture").setValue("imgeEncoded");
-            startActivity(new Intent(ThemProductActivity.this, MainActivity2.class));
+            Intent intent = new Intent(ThemProductActivity.this, QRGenerate.class);
+            intent.putExtra("id", productId);
+            startActivity(intent);
         }
         catch (Exception ex)
         {

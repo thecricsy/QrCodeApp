@@ -4,12 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:textAlignment="center"
-        android:text="Thêm danh mục"/>
 
     <EditText
         android:id="@+id/edtName_add_category"
@@ -26,7 +20,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nhập số lượng dự định"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:textSize="15sp" />
 
     <EditText
@@ -35,7 +29,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nhập số lượng"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textSize="15sp" />
     <EditText
         android:id="@+id/edtPendingQuantity_add_category"
@@ -43,7 +37,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nhập số lượng tạm hoãn"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textSize="15sp" />
 
     <EditText

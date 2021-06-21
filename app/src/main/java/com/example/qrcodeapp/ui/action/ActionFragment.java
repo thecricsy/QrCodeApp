@@ -51,6 +51,7 @@ public class ActionFragment extends Fragment {
                 final EditText edtPendingQuantity = (EditText) alertLayout.findViewById(R.id.edtPendingQuantity_add_category);
                 final EditText edtDescription = (EditText) alertLayout.findViewById(R.id.edtDescription_add_category);
                 AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+                alert.setTitle("THÊM DANH MỤC");
                 alert.setView(alertLayout);
                 alert.setCancelable(true);
                 alert.setPositiveButton("Thoát", new DialogInterface.OnClickListener() {
@@ -93,8 +94,46 @@ public class ActionFragment extends Fragment {
         btnAddVacxin = root.findViewById(R.id.btnAddVacxin);
         btnAddVacxin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-//                startActivity(new Intent(getContext(), EditProfileActivity.class));
+            public void onClick(View v) {
+                LayoutInflater inflater = getLayoutInflater();
+                View alertLayout = inflater.inflate(R.layout.add_category_layout, null);
+                final EditText edtName = (EditText) alertLayout.findViewById(R.id.edtName_add_category);
+                final EditText edtExpectedQuantity = (EditText) alertLayout.findViewById(R.id.edtExpectedQuantity_add_category);
+                final EditText edtQuantity = (EditText) alertLayout.findViewById(R.id.edtQuantity_add_category);
+                final EditText edtPendingQuantity = (EditText) alertLayout.findViewById(R.id.edtPendingQuantity_add_category);
+                final EditText edtDescription = (EditText) alertLayout.findViewById(R.id.edtDescription_add_category);
+                AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+                alert.setView(alertLayout);
+                alert.setTitle("THÊM VACXIN");
+                alert.setCancelable(true);
+                alert.setPositiveButton("Thoát", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(), "Cancel clicked", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                alert.setNegativeButton("Thêm", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String name = edtName.getText().toString();
+                        String expectedQuantity  = edtExpectedQuantity.getText().toString();
+                        String quantity = edtQuantity.getText().toString();
+                        String pending = edtPendingQuantity.getText().toString();
+                        String des = edtDescription.getText().toString();
+                        String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+                        Category category = new Category(name+mydate, name, quantity, expectedQuantity, pending, des);
+                        DatabaseReference rff= firebaseDatabase.getReference();
+                        rff.child("vacxin").child(name+mydate).setValue(category).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(getContext(), "Done!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+                AlertDialog dialog = alert.create();
+                dialog.show();
             }
         });
         return root;

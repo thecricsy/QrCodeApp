@@ -8,14 +8,12 @@
     android:orientation="vertical"
     tools:context=".ThemProductActivity">
 
-    <EditText
-        android:id="@+id/edtProductId"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nhập Id"
-        android:inputType="textPersonName"
-        android:textSize="15sp" />
+        android:text="THÊM SẢN PHẨM"
+        android:textSize="30sp"
+        android:gravity="center"/>
     <EditText
         android:id="@+id/edtTen"
         android:layout_width="match_parent"

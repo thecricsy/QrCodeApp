@@ -46,6 +46,7 @@ public class Scanner extends AppCompatActivity {
                         Intent i  = new Intent(Scanner.this, ProductDetailActivity.class);
                         i.putExtra("id", result.getText());
 //                        resultData.setText(result.getText());
+                        startActivity(i);
                     }
                 });
 
