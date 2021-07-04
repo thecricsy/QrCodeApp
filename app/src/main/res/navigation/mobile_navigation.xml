@@ -7,24 +7,24 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.qrcodeapp.ui.home.HomeFragment"
+        android:name="com.example.qrcodeapp.Fragments.Home.HomeFragment"
         android:label="Trang chủ"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_action"
-        android:name="com.example.qrcodeapp.ui.action.ActionFragment"
+        android:name="com.example.qrcodeapp.Fragments.Action.ActionFragment"
         android:label="Tác vụ"
         tools:layout="@layout/fragment_action" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.qrcodeapp.ui.dashboard.DashboardFragment"
+        android:name="com.example.qrcodeapp.Fragments.Dashboard.DashboardFragment"
         android:label="Thống kê"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.qrcodeapp.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_profile"
+        android:name="com.example.qrcodeapp.Fragments.Profile.ProfileFragment"
         android:label="Thông tin"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_profile" />
 </navigation>

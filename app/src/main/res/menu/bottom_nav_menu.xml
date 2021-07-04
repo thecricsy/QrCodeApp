@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="Trang chủ" />
+
     <item
         android:id="@+id/navigation_action"
         android:icon="@drawable/ic_baseline_edit_24"
@@ -14,8 +16,11 @@
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="Thống kê" />
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_baseline_person_24"
-        android:title="Thông tin" />
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/profile_icon"
+        android:title="Hồ sơ" />
+
+
+
 
 </menu>
