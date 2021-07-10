@@ -29,14 +29,17 @@
             android:label="@string/title_activity_main2" />
         <activity android:name=".Scanner" />
         <activity android:name=".QRGenerate" />
-        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".SplashScreen"
+            android:screenOrientation="portrait">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".CapNhatProductActivity" />
         <activity android:name=".ThemProductActivity" />
