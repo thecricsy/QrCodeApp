@@ -4,34 +4,30 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
 
 import org.jetbrains.annotations.NotNull;
 
 public class LoginAdapter extends FragmentStateAdapter {
+
+
+//    private Context context;
+//    int totalTabs;
+
+    public LoginAdapter(@NonNull  FragmentManager fragmentManager, @NonNull  Lifecycle lifecycle) {
+        super(fragmentManager, lifecycle);
+    }
+
+//    public LoginAdapter(FragmentActivity fa, Context context, int totalTabs){
+//        super(fa);
+//        this.context = context;
+//        this.totalTabs = totalTabs;
+//    }
+
     @NonNull
-    @NotNull
-
-
-    private Context context;
-    int totalTabs;
-
-    public LoginAdapter(FragmentActivity fa, Context context, int totalTabs){
-        super(fa);
-        this.context = context;
-        this.totalTabs = totalTabs;
-    }
-
     @Override
-    public int getItemCount() {
-        return totalTabs;
-    }
-    @Override
-
     public Fragment createFragment(int position){
         switch (position){
             case 0:
@@ -44,4 +40,11 @@ public class LoginAdapter extends FragmentStateAdapter {
                 return null;
         }
     }
+
+    @Override
+    public int getItemCount() {
+        return 2;
+    }
+
+
 }

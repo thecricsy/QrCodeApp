@@ -25,20 +25,20 @@ public class SignupTabFragment extends Fragment {
         confirmPass = root.findViewById(R.id.txtConfirmPwd_signUpForm);
         signUp = root.findViewById(R.id.btnSignUp_signUpForm);
 
-        email.setTranslationX(800);
-        pass.setTranslationX(800);
-        confirmPass.setTranslationX(800);
-        signUp.setTranslationX(800);
-
-        email.setAlpha(v);
-        pass.setAlpha(v);
-        confirmPass.setAlpha(v);
-        signUp.setAlpha(v);
-
-        email.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        pass.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(500).start();
-        confirmPass.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(700).start();
-        signUp.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(900).start();
+//        email.setTranslationX(800);
+//        pass.setTranslationX(800);
+//        confirmPass.setTranslationX(800);
+//        signUp.setTranslationX(800);
+//
+//        email.setAlpha(v);
+//        pass.setAlpha(v);
+//        confirmPass.setAlpha(v);
+//        signUp.setAlpha(v);
+//
+//        email.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(300).start();
+//        pass.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(500).start();
+//        confirmPass.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(700).start();
+//        signUp.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(900).start();
 
         return root;
     }
