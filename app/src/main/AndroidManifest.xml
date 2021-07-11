@@ -20,7 +20,7 @@
         android:theme="@style/Theme.QrCodeApp">
         <activity android:name=".NotificationActivity"></activity>
         <activity android:name=".ChartActivity" />
-        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".UserProfile" />
         <activity android:name=".AccountSettingsActivity" />
         <activity android:name=".NoteActivity" />
         <activity android:name=".ProductDetailActivity" />

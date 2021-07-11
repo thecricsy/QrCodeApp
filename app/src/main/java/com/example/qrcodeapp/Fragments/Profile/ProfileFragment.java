@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.qrcodeapp.MainActivity2;
 import com.example.qrcodeapp.NoteActivity;
-import com.example.qrcodeapp.EditProfileActivity;
+import com.example.qrcodeapp.UserProfile;
 import com.example.qrcodeapp.AccountSettingsActivity;
 import com.example.qrcodeapp.LoginActivity;
 import com.example.qrcodeapp.NotificationActivity;
@@ -84,7 +84,7 @@ public class ProfileFragment extends Fragment {
         txtEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), EditProfileActivity.class));
+                startActivity(new Intent(getContext(), UserProfile.class));
             }
         });
         getProductFromFirebase();
